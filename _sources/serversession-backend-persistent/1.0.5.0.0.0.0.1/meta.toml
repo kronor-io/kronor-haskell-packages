@@ -1,0 +1,4 @@
+timestamp = 2023-10-04T18:46:00Z
+github = { repo = "kronor-io/serversession", rev = "d4c72af987afa7f36ef681707d86f4b8548e2744" }
+subdir = 'serversession-backend-persistent'
+force-version = true
