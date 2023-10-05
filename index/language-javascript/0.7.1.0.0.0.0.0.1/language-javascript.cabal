@@ -1,0 +1,105 @@
+cabal-version:      >=1.10
+name:               language-javascript
+version:            0.7.1.0.0.0.0.0.1
+license:            BSD3
+license-file:       LICENSE
+copyright:
+    (c) 2010-2015 Alan Zimmerman
+    (c) 2015-2019 Erik de Castro Lopo
+    (c) 2018      Daniel Gasienica
+
+maintainer:         Erik de Castro Lopo <erikd@mega-nerd.com>
+author:             Alan Zimmerman
+homepage:           https://github.com/erikd/language-javascript
+bug-reports:        https://github.com/erikd/language-javascript/issues
+synopsis:           Parser for JavaScript
+description:
+    Parses Javascript into an Abstract Syntax Tree (AST).  Initially intended as frontend to hjsmin.
+    .
+    Note: Version 0.5.0 breaks compatibility with prior versions, the AST has been reworked to allow
+    round trip processing of JavaScript.
+
+category:           Language
+build-type:         Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+    .ghci
+    test/Unicode.js
+    test/k.js
+    test/unicode.txt
+    src/Language/JavaScript/Parser/Lexer.x
+
+source-repository head
+    type:     git
+    location: https://github.com/erikd/language-javascript.git
+
+library
+    exposed-modules:
+        Language.JavaScript.Parser
+        Language.JavaScript.Parser.AST
+        Language.JavaScript.Parser.Grammar7
+        Language.JavaScript.Parser.Lexer
+        Language.JavaScript.Parser.Parser
+        Language.JavaScript.Parser.SrcLocation
+        Language.JavaScript.Pretty.Printer
+        Language.JavaScript.Process.Minify
+
+    hs-source-dirs:  src
+    other-modules:
+        Language.JavaScript.Parser.LexerUtils
+        Language.JavaScript.Parser.ParseError
+        Language.JavaScript.Parser.ParserMonad
+        Language.JavaScript.Parser.Token
+
+    ghc-options:     -Wall -fwarn-tabs
+    build-depends:
+        base >=4 && <5,
+        array >=0.3,
+        mtl >=1.1,
+        containers >=0.2,
+        blaze-builder >=0.2,
+        bytestring >=0.9.1,
+        text >=1.2,
+        utf8-string >=0.3.7 && <2
+
+    if !impl(ghc >=8.0)
+        build-depends: semigroups >=0.16.1
+
+    if impl(ghc >=7.10)
+        build-tools: happy >=1.19, alex >=3.1.4
+
+    else
+        if impl(ghc >=7.8)
+            build-tools: happy >=1.19, alex >=3.1
+
+        else
+            build-tools: happy >=1.18.5, alex >=3.0.5
+
+test-suite testsuite
+    type:           exitcode-stdio-1.0
+    main-is:        testsuite.hs
+    hs-source-dirs: test
+    other-modules:
+        Test.Language.Javascript.ExpressionParser
+        Test.Language.Javascript.Lexer
+        Test.Language.Javascript.LiteralParser
+        Test.Language.Javascript.Minify
+        Test.Language.Javascript.ModuleParser
+        Test.Language.Javascript.ProgramParser
+        Test.Language.Javascript.RoundTrip
+        Test.Language.Javascript.StatementParser
+
+    ghc-options:    -Wall -fwarn-tabs
+    build-depends:
+        base,
+        Cabal >=1.9.2,
+        QuickCheck >=2,
+        hspec,
+        array >=0.3,
+        containers >=0.2,
+        mtl >=1.1,
+        utf8-string >=0.3.7 && <2,
+        bytestring >=0.9.1,
+        blaze-builder >=0.2,
+        language-javascript

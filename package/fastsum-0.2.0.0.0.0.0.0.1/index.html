@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>
+      fastsum-0.2.0.0.0.0.0.0.1
+    </title>
+  </head>
+  <body>
+    <div class="container px-4 py-5">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../../index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../all-packages/index.html">All packages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../all-package-versions/index.html">All package versions</a>
+        </li>
+      </ul>      <h1 class="py-5">
+        fastsum-0.2.0.0.0.0.0.0.1
+      </h1>
+      <dl class="row class="px-4 py-5">
+        <dt class="col-sm-3">Synopsis</dt>
+        <dd class="col-sm-9"><p>A fast open-union type suitable for 100+ contained alternatives</p></dd>
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9"><p>This package provides Data.Sum, an open-union type, similar to the Union type
+that powers the implementation of Oleg Kiselyov&#39;s extensible-effects library.
+
+Unlike most open-union implementations, this type is very fast to compile,
+even when the type-level list of alternatives contains hundreds of entries.
+Membership queries are constant-time, compiling to a single type-level natural
+lookup in a closed type family, unlike the traditional encoding of Union,
+which relies on recursive typeclass lookups. As such, this type lends itself
+to representing abstract syntax trees or other rich data structures.
+
+This project is safe to use in production. Any performance problems at
+compile-time or runtime should be filed as bugs.</p></dd>
+        <dt class="col-sm-3">Author</dt>
+        <dd class="col-sm-9"><p>Rob Rix, Josh Vera, Allele Dev, Patrick Thomson</p></dd>
+        <dt class="col-sm-3">Maintainer</dt>
+        <dd class="col-sm-9"><p>patrickt@github.com</p></dd>
+        <dt class="col-sm-3">License</dt>
+        <dd class="col-sm-9"><p>BSD-3-Clause</p></dd>
+        <dt class="col-sm-3">Source</dt>
+        <dd class="col-sm-9">
+          <dl class="row">
+            <dd>
+            <a href="https://github.com/patrickt/fastsum/tree/d2654170b2212931ce701eae51c6ab0fb274ced0">https://github.com/patrickt/fastsum</a>
+            </dd>
+            <dt>Commit hash</dt>
+            <dd>d2654170b2212931ce701eae51c6ab0fb274ced0</dd>
+                      </dl>
+        </dd>
+        <dt class="col-sm-3">Timestamp</dt>
+        <dd class="col-sm-9"><p>2023-10-05T08:26:42Z</p></dd>
+        <dt class="col-sm-3">Revisions</dt>
+        <dd class="col-sm-9">
+          <p>None</p>
+        </dd>
+      </dl>
+    </div>
+  </body>
+</html>

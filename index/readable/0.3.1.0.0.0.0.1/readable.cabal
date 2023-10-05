@@ -1,0 +1,37 @@
+cabal-version:      >=1.6
+name:               readable
+version:            0.3.1.0.0.0.0.1
+license:            BSD3
+license-file:       LICENSE
+maintainer:         mightybyte@gmail.com
+author:             Doug Beardsley
+tested-with:
+    ghc ==7.4.2 ghc ==7.6.3 ghc ==7.8.4 ghc ==7.10.3 ghc ==8.0.2
+    ghc ==8.2.2 ghc ==8.4.4 ghc ==8.6.3
+
+homepage:           https://github.com/mightybyte/readable
+synopsis:           Reading from Text and ByteString
+description:
+    Provides a Readable type class for reading data types from ByteString and
+    Text.  Also includes efficient implementations for common data types.
+
+category:           Text
+build-type:         Simple
+extra-source-files:
+    CHANGELOG.md
+    LICENSE
+    README.md
+    Setup.hs
+
+source-repository head
+    type:     git
+    location: git://github.com/mightybyte/readable.git
+
+library
+    exposed-modules: Data.Readable
+    hs-source-dirs:  src
+    ghc-options:     -Wall -fwarn-tabs
+    build-depends:
+        base >=4 && <5,
+        bytestring >=0.9 && <0.12,
+        text >=0.11 && <2.1

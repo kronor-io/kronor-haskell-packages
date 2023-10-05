@@ -1,0 +1,79 @@
+cabal-version: 1.12
+name:          yesod-routes-metrics
+version:       0.4.0.0.0.0.0.0.1
+license:       BSD3
+license-file:  LICENSE
+copyright:     2017 Plow Technologies
+maintainer:    mchaver@gmail.com
+author:        James M.C. Haver II
+homepage:      https://github.com/tylerjl/yesod-routes-metrics#readme
+bug-reports:   https://github.com/tylerjl/yesod-routes-metrics/issues
+synopsis:
+    Parser Yesod routes file and compute route access metrics for Yesod
+
+description:   README.md
+category:      Web
+build-type:    Simple
+
+source-repository head
+    type:     git
+    location: https://github.com/tylerjl/yesod-routes-metrics
+
+library
+    exposed-modules:
+        Yesod.Routes.Metrics
+        Yesod.Routes.Convert
+        Yesod.Routes.Convert.Internal
+        Yesod.Routes.Parser.Internal
+        Yesod.Routes.Util
+
+    hs-source-dirs:   src
+    other-modules:
+        Yesod.Routes.Stats
+        Paths_yesod_routes_metrics
+
+    default-language: Haskell2010
+    ghc-options:      -Wall -Werror
+    build-depends:
+        base >=4.7 && <5,
+        bytestring,
+        containers,
+        ekg-core,
+        http-types,
+        text,
+        time,
+        vector,
+        vector-algorithms,
+        wai,
+        yesod-core
+
+test-suite yesod-routes-metrics-test
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs
+    hs-source-dirs:   test
+    other-modules:
+        App
+        Foundation
+        Paths_yesod_routes_metrics
+
+    default-language: Haskell2010
+    build-depends:
+        HTTP,
+        base >=4.7 && <5,
+        bytestring,
+        containers,
+        ekg,
+        ekg-core,
+        file-embed,
+        hspec,
+        http-types,
+        network,
+        random,
+        text,
+        unordered-containers,
+        vault,
+        wai,
+        warp,
+        yesod,
+        yesod-core,
+        yesod-routes-metrics

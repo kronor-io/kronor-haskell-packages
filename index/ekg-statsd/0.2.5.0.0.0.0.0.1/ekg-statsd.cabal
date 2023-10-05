@@ -1,0 +1,40 @@
+cabal-version:      >=1.10
+name:               ekg-statsd
+version:            0.2.5.0.0.0.0.0.1
+license:            BSD3
+license-file:       LICENSE
+maintainer:
+    Johan Tibell <johan.tibell@gmail.com>,
+    Mikhail Glushenkov <mikhail.glushenkov@gmail.com>
+
+author:             Johan Tibell
+tested-with:
+    ghc ==8.10.1 ghc ==8.8.3 ghc ==8.6.5 ghc ==8.4.4 ghc ==8.2.2
+    ghc ==8.0.2 ghc ==7.10.3 ghc ==7.8.4 ghc ==7.6.3
+
+homepage:           https://github.com/tibbe/ekg-statsd
+bug-reports:        https://github.com/tibbe/ekg-statsd/issues
+synopsis:           Push metrics to statsd
+description:
+    This library lets you push system metrics to a statsd server.
+
+category:           System
+build-type:         Simple
+extra-source-files: CHANGES.md
+
+source-repository head
+    type:     git
+    location: https://github.com/tibbe/ekg-statsd.git
+
+library
+    exposed-modules:  System.Remote.Monitoring.Statsd
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=4.6 && <5,
+        bytestring <1.0,
+        ekg-core >=0.1 && <1.0,
+        network <3.2,
+        text <1.3,
+        time <1.14,
+        unordered-containers <0.3
