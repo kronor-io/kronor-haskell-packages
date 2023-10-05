@@ -1,0 +1,3 @@
+timestamp = 2023-10-05T08:26:42Z
+github = { repo = "patrickt/fastsum", rev = "d2654170b2212931ce701eae51c6ab0fb274ced0" }
+force-version = true
