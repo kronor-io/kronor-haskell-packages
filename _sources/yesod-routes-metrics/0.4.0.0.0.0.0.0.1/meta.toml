@@ -1,0 +1,3 @@
+timestamp = 2023-10-05T08:28:27Z
+github = { repo = "kronor-io/yesod-routes-metrics", rev = "1343040e1fa4a3cf07a638991a91aa486e9b3e05" }
+force-version = true
