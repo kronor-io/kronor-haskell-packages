@@ -1,0 +1,3 @@
+timestamp = 2023-10-05T08:39:16Z
+github = { repo = "kronor-io/hasql-optparse-applicative", rev = "4b10440041cb6f692aca3b801b03eaa126cd10f9" }
+force-version = true
