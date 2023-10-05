@@ -1,0 +1,3 @@
+timestamp = 2023-10-05T08:20:49Z
+github = { repo = "kronor-io/ekg", rev = "de316df39948e4cd3bab4ae611ab5007c1a4db26" }
+force-version = true
