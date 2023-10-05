@@ -11,7 +11,7 @@
         let pkgs = nixpkgs.legacyPackages.${system}; in
         {
           devShells.default = with pkgs; mkShellNoCC {
-            name = "cardano-haskell-packages";
+            name = "kronor-haskell-packages";
             buildInputs = [
               bash
               coreutils
