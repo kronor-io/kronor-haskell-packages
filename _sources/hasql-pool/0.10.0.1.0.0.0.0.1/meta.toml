@@ -1,0 +1,3 @@
+timestamp = 2023-12-17T15:05:39Z
+github = { repo = "kronor-io/hasql-pool", rev = "47a998ba9ad0eb1d9516ab34dfb58a3664bbf76f" }
+force-version = true
