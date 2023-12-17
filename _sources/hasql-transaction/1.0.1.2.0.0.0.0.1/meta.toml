@@ -1,0 +1,3 @@
+timestamp = 2023-12-17T01:30:05Z
+github = { repo = "kronor-io/hasql-transaction", rev = "ff4c43f626f57342ae4f381eeeeb79de2ddf10e7" }
+force-version = true
