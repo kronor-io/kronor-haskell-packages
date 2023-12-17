@@ -1,0 +1,3 @@
+timestamp = 2023-12-17T00:59:43Z
+github = { repo = "kronor-io/haskell-jwt", rev = "483d5cfee22501831e722d33cd0734afd9827b93" }
+force-version = true
