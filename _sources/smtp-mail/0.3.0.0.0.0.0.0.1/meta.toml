@@ -1,0 +1,3 @@
+timestamp = 2023-12-17T17:55:22Z
+github = { repo = "kronor-io/smtp-mail", rev = "5d7b7d9a125ae8bfb841df93e11ae7be49ab728a" }
+force-version = true
