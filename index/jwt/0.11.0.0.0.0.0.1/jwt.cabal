@@ -1,0 +1,110 @@
+cabal-version:      1.12
+name:               jwt
+version:            0.11.0.0.0.0.0.1
+license:            MIT
+license-file:       LICENSE
+maintainer:         brian@brianmckenna.org
+author:             Brian McKenna
+homepage:           https://github.com/puffnfresh/haskell-jwt
+bug-reports:        https://github.com/puffnfresh/haskell-jwt/issues
+synopsis:           JSON Web Token (JWT) decoding and encoding
+description:
+    JSON Web Token (JWT) is a compact URL-safe means of representing claims to be transferred between two parties.
+    .
+    To get started, see the documentation for the "Web.JWT" module.
+
+category:           Web
+build-type:         Simple
+extra-source-files:
+    CHANGELOG.md
+    README.md
+    stack.yaml
+    tests/jwt.secret.1
+
+source-repository head
+    type:     git
+    location: https://github.com/puffnfresh/haskell-jwt.git
+
+library
+    exposed-modules:  Web.JWT
+    hs-source-dirs:   src
+    other-modules:
+        Data.Text.Extended
+        Data.ByteString.Extended
+
+    default-language: Haskell2010
+    ghc-options:
+        -Wall -fno-warn-unused-do-bind -fno-warn-orphans
+        -fno-warn-name-shadowing
+
+    build-depends:
+        base >=4.8 && <5,
+        crypton >=0.6,
+        cryptostore >=0.2,
+        memory >=0.8,
+        bytestring >=0.10,
+        text >=0.11,
+        aeson >=0.7,
+        containers >=0.5,
+        unordered-containers >=0.2,
+        scientific >=0.2,
+        http-types >=0.8,
+        time >=1.1,
+        vector >=0.7.1,
+        semigroups >=0.15.4,
+        network-uri,
+        crypton-x509,
+        crypton-x509-store
+
+test-suite testsuite
+    type:             exitcode-stdio-1.0
+    main-is:          TestRunner.hs
+    cpp-options:      -DTEST
+    hs-source-dirs:   tests/src src
+    other-modules:
+        Web.JWT
+        Web.JWTInteropTests
+        Web.JWTTests
+        Web.JWTTestsCompat
+        Data.Text.Extended
+        Data.Text.ExtendedTests
+        Data.ByteString.Extended
+        Data.ByteString.ExtendedTests
+
+    default-language: Haskell2010
+    build-depends:
+        base <5 && >=4.8,
+        tasty >=0.7,
+        tasty-th >=0.1,
+        tasty-hunit >=0.4,
+        tasty-quickcheck >=0.3,
+        lens-aeson,
+        lens,
+        HUnit,
+        QuickCheck >=2.4.0.1,
+        crypton,
+        cryptostore,
+        memory,
+        bytestring >=0.10,
+        text >=0.11,
+        aeson,
+        scientific >=0.2,
+        containers,
+        unordered-containers,
+        http-types,
+        time >=1.1,
+        vector >=0.7.1,
+        semigroups >=0.15.4,
+        network-uri,
+        crypton-x509,
+        crypton-x509-store
+
+test-suite doctests
+    type:             exitcode-stdio-1.0
+    main-is:          doctests.hs
+    default-language: Haskell2010
+    ghc-options:      -threaded
+    build-depends:
+        base <5 && >=4.8,
+        jwt,
+        doctest >=0.20
