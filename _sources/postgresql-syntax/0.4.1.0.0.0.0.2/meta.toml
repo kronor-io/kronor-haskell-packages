@@ -1,0 +1,3 @@
+timestamp = 2023-12-17T00:24:42Z
+github = { repo = "kronor-io/postgresql-syntax", rev = "a984dc01569e100fd329ef40cb749dd1a43f3da7" }
+force-version = true
