@@ -1,0 +1,69 @@
+cabal-version:      3.0
+name:               hasql-pool
+version:            0.10.0.1.0.0.0.0.1
+license:            MIT
+license-file:       LICENSE
+copyright:          (c) 2015, Nikita Volkov
+maintainer:         Nikita Volkov <nikita.y.volkov@mail.ru>
+author:             Nikita Volkov <nikita.y.volkov@mail.ru>
+homepage:           https://github.com/nikita-volkov/hasql-pool
+bug-reports:        https://github.com/nikita-volkov/hasql-pool/issues
+synopsis:           Pool of connections for Hasql
+category:           Hasql, Database, PostgreSQL
+extra-source-files: CHANGELOG.md
+
+source-repository head
+    type:     git
+    location: git://github.com/nikita-volkov/hasql-pool.git
+
+library
+    exposed-modules:    Hasql.Pool
+    hs-source-dirs:     library
+    other-modules:      Hasql.Pool.Prelude
+    default-language:   Haskell2010
+    default-extensions:
+        NoImplicitPrelude NoMonomorphismRestriction BangPatterns
+        BlockArguments ConstraintKinds DataKinds DefaultSignatures
+        DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric
+        DeriveTraversable DerivingVia EmptyDataDecls FlexibleContexts
+        FlexibleInstances FunctionalDependencies GADTs
+        GeneralizedNewtypeDeriving InstanceSigs LambdaCase
+        LiberalTypeSynonyms MagicHash MultiParamTypeClasses MultiWayIf
+        NumericUnderscores OverloadedStrings ParallelListComp PatternGuards
+        QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables
+        StandaloneDeriving StrictData TemplateHaskell TupleSections
+        TypeApplications TypeFamilies TypeOperators UnboxedTuples
+
+    build-depends:
+        base >=4.11 && <5,
+        hasql >=1.6.0.1 && <1.7,
+        stm >=2.5 && <3,
+        time >=1.9 && <2,
+        unliftio >=0.2.25 && <0.3
+
+test-suite test
+    type:               exitcode-stdio-1.0
+    main-is:            Main.hs
+    hs-source-dirs:     test
+    default-language:   Haskell2010
+    default-extensions:
+        NoImplicitPrelude NoMonomorphismRestriction BangPatterns
+        BlockArguments ConstraintKinds DataKinds DefaultSignatures
+        DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric
+        DeriveTraversable DerivingVia EmptyDataDecls FlexibleContexts
+        FlexibleInstances FunctionalDependencies GADTs
+        GeneralizedNewtypeDeriving InstanceSigs LambdaCase
+        LiberalTypeSynonyms MagicHash MultiParamTypeClasses MultiWayIf
+        NumericUnderscores OverloadedStrings ParallelListComp PatternGuards
+        QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables
+        StandaloneDeriving StrictData TemplateHaskell TupleSections
+        TypeApplications TypeFamilies TypeOperators UnboxedTuples
+
+    ghc-options:        -threaded
+    build-depends:
+        async >=2.2 && <3,
+        hasql,
+        hasql-pool,
+        hspec >=2.6 && <3,
+        random >=1.2 && <2,
+        rerebase >=1.15 && <2
