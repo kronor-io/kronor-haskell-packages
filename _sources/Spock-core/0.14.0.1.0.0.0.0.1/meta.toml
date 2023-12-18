@@ -1,0 +1,4 @@
+timestamp = 2023-12-18T02:19:43Z
+github = { repo = "agrafix/Spock", rev = "40d028bfea0e94ca7096c719cd024ca47a46e559" }
+subdir = 'Spock-core'
+force-version = true
