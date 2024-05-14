@@ -1,0 +1,3 @@
+timestamp = 2024-05-14T15:13:37Z
+github = { repo = "kronor-io/statecharts", rev = "839bb74" }
+subdir = 'sdk'
