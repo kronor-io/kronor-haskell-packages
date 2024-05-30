@@ -1,0 +1,96 @@
+cabal-version: 1.12
+name:          statechart-sdk
+version:       1.0.0
+license:       AllRightsReserved
+copyright:     2021 Kronor
+maintainer:    dev@kronor.io
+author:        Kronor.io
+description:   Statechart SDK (Statechart definitions and build tool)
+build-type:    Simple
+
+library
+    exposed-modules:
+        Statechart.CodeGen.Haskell
+        Statechart.CodeGen.SQL
+        Statechart.CodeGen.Visualization
+        Statechart.Helpers
+        Statechart.SCXML
+        Statechart.Types
+
+    hs-source-dirs:     src
+    other-modules:      Paths_statechart_sdk
+    default-language:   Haskell2010
+    default-extensions:
+        NoImplicitPrelude ApplicativeDo BangPatterns BinaryLiterals
+        BlockArguments ConstraintKinds DataKinds DefaultSignatures
+        DeriveAnyClass DeriveDataTypeable DeriveFoldable DeriveFunctor
+        DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia
+        DoAndIfThenElse DuplicateRecordFields EmptyDataDecls
+        EmptyDataDeriving ExistentialQuantification FlexibleContexts
+        FlexibleInstances FunctionalDependencies GADTs
+        GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs
+        KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf
+        NamedFieldPuns NoImplicitPrelude OverloadedStrings
+        PartialTypeSignatures PatternGuards PatternSynonyms PolyKinds
+        RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving
+        StrictData TupleSections TypeFamilies TypeApplications
+        TypeSynonymInstances ViewPatterns QuasiQuotes
+
+    ghc-options:        -Wall
+    build-depends:
+        aeson,
+        base >=4.11 && <10,
+        bytestring,
+        casing,
+        containers,
+        path,
+        path-io,
+        rio >=0.1.12.0,
+        string-interpolate,
+        template-haskell,
+        text,
+        xml-conduit
+
+test-suite statechart-sdk-test
+    type:               exitcode-stdio-1.0
+    main-is:            Spec.hs
+    hs-source-dirs:     test
+    other-modules:
+        CoreSpec
+        Helper
+        Plugin.Haskell.Chart1
+        Plugin.Haskell.Chart2
+        Plugin.Haskell.Chart3
+        VisualizationSpec
+        Paths_statechart_sdk
+
+    default-language:   Haskell2010
+    default-extensions:
+        NoImplicitPrelude ApplicativeDo BangPatterns BinaryLiterals
+        BlockArguments ConstraintKinds DataKinds DefaultSignatures
+        DeriveAnyClass DeriveDataTypeable DeriveFoldable DeriveFunctor
+        DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia
+        DoAndIfThenElse DuplicateRecordFields EmptyDataDecls
+        EmptyDataDeriving ExistentialQuantification FlexibleContexts
+        FlexibleInstances FunctionalDependencies GADTs
+        GeneralizedNewtypeDeriving ImportQualifiedPost InstanceSigs
+        KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf
+        NamedFieldPuns NoImplicitPrelude OverloadedStrings
+        PartialTypeSignatures PatternGuards PatternSynonyms PolyKinds
+        RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving
+        StrictData TupleSections TypeFamilies TypeApplications
+        TypeSynonymInstances ViewPatterns QuasiQuotes
+
+    ghc-options:        -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        base >=4.11 && <10,
+        directory,
+        file-embed,
+        path,
+        path-io,
+        rio >=0.1.12.0,
+        statechart-sdk,
+        string-interpolate,
+        sydtest,
+        sydtest-discover,
+        template-haskell
