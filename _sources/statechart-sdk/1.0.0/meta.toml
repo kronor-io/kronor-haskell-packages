@@ -1,0 +1,4 @@
+timestamp = 2024-05-30T10:20:27Z
+github = { repo = "kronor-io/statecharts", rev = "d77fbc4809a2ee9a1cb14a6753f0e86f16516b52" }
+subdir = 'sdk'
+force-version = true
