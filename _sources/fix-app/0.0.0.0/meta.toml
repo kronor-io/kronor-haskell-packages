@@ -1,0 +1,3 @@
+timestamp = 2024-11-11T09:28:13Z
+github = { repo = "kronor-io/fix", rev = "086f804f5e561a4b2f7c4da1e3b7b924a152e83a" }
+subdir = 'fix-app'
