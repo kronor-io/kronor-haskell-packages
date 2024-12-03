@@ -1,0 +1,4 @@
+timestamp = 2024-12-03T16:14:09Z
+github = { repo = "kronor-io/fix", rev = "948407602204fa16713299bbb481b53fa2bdfaa8" }
+subdir = 'fix-core-gen'
+force-version = true
