@@ -1,0 +1,20 @@
+cabal-version: 1.12
+name:          fix-core
+version:       0.0.0.0.0.0.0.0.0.0.0.0.1
+build-type:    Simple
+
+library
+    exposed-modules:  FIX.Core
+    hs-source-dirs:   src
+    other-modules:    Paths_fix_core
+    default-language: Haskell2010
+    build-depends:
+        base >=4.7 && <5,
+        bytestring,
+        megaparsec,
+        text,
+        time,
+        validity,
+        validity-bytestring,
+        validity-text,
+        validity-time

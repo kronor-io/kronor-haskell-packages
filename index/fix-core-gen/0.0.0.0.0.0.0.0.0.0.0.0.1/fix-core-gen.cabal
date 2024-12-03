@@ -1,0 +1,44 @@
+cabal-version:      1.12
+name:               fix-core-gen
+version:            0.0.0.0.0.0.0.0.0.0.0.0.1
+build-type:         Simple
+extra-source-files: test_resources/messages/example.tagvalue
+
+library
+    exposed-modules:
+        FIX.Core.Gen
+        FIX.Core.TestUtils
+
+    hs-source-dirs:   src
+    other-modules:    Paths_fix_core_gen
+    default-language: Haskell2010
+    build-depends:
+        QuickCheck,
+        base >=4.7 && <5,
+        bytestring,
+        fix-core,
+        genvalidity,
+        genvalidity-bytestring,
+        genvalidity-sydtest,
+        genvalidity-text,
+        genvalidity-time,
+        sydtest
+
+test-suite fix-core-test
+    type:               exitcode-stdio-1.0
+    main-is:            Spec.hs
+    build-tool-depends: sydtest-discover:sydtest-discover
+    hs-source-dirs:     test
+    other-modules:
+        FIX.CoreSpec
+        Paths_fix_core_gen
+
+    default-language:   Haskell2010
+    ghc-options:        -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        base >=4.7 && <5,
+        bytestring,
+        fix-core,
+        fix-core-gen,
+        sydtest,
+        time
