@@ -1,0 +1,3 @@
+timestamp = 2024-12-18T11:53:28Z
+github = { repo = "kronor-io/streamly-hkg-Cabal-fix/", rev = "286479b4770e024b92daa37d16ba4e581d9c795e" }
+force-version = true
