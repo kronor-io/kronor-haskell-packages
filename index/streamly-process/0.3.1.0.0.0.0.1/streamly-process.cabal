@@ -1,0 +1,153 @@
+cabal-version:      2.2
+name:               streamly-process
+version:            0.3.1.0.0.0.0.1
+license:            Apache-2.0
+license-file:       LICENSE
+copyright:          Composewell Technologies
+maintainer:         streamly@composewell.com
+author:             Composewell Technologies
+stability:          Experimental
+tested-with:
+    ghc ==9.4.4 ghc ==9.2.7 ghc ==9.0.2 ghc ==8.10.7 ghc ==8.8.4
+    ghc ==8.6.5
+
+homepage:           https://streamly.composewell.com
+bug-reports:        https://github.com/composewell/streamly-process/issues
+synopsis:           Use OS processes as stream transformation functions
+description:
+    Use operating system (OS) commands in Haskell programs as if they were
+    native Haskell functions, by treating their inputs and outputs as
+    Haskell streams. This allows you to write high-level Haskell scripts
+    that can perform tasks similar to shell scripts, but with C-like
+    performance, and with strong safety guarantees, refactorability, and
+    modularity.
+
+category:           Streamly, Streaming, System
+build-type:         Simple
+extra-source-files:
+    CHANGELOG.md
+    NOTICE
+    README.md
+    design/proposal.md
+    src/DocTestCommand.hs
+    src/DocTestProcess.hs
+    test/data/failExec.bat
+    test/data/failExec.sh
+    test/data/passExec.bat
+    test/data/passExec.sh
+    test/data/writeTrToError.bat
+    test/data/writeTrToError.sh
+
+source-repository head
+    type:     git
+    location: https://github.com/composewell/streamly-process
+
+flag fusion-plugin
+    description: Use fusion plugin for benchmarks and executables
+    default:     False
+    manual:      True
+
+flag use-native
+    description: Do not depend on the process package
+    default:     False
+    manual:      True
+
+library
+    exposed-modules:
+        Streamly.System.Process
+        Streamly.System.Command
+        Streamly.Internal.System.Process
+        Streamly.Internal.System.Command
+
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    include-dirs:     src
+    ghc-options:
+        -Weverything -Wno-implicit-prelude -Wno-missing-deriving-strategies
+        -Wno-missing-exported-signatures -Wno-missing-import-lists
+        -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode
+        -Wno-missed-specialisations -Wno-all-missed-specialisations
+        -Wno-monomorphism-restriction -Wno-prepositive-qualified-module
+        -Wno-unsafe -O2 -fdicts-strict -fspec-constr-recursive=16
+        -fmax-worker-args=16
+
+    build-depends:
+        base >=4.8 && <5,
+        exceptions >=0.8 && <0.11,
+        streamly >=0.9 && <0.12,
+        streamly-core >=0.1 && <0.4
+
+    if !impl(ghc <9.2)
+        ghc-options: -Wno-missing-kind-signatures
+
+    if flag(use-native)
+        cpp-options: -DUSE_NATIVE
+
+    if (flag(use-native) && !os(windows))
+        exposed-modules: Streamly.Internal.System.Process.Posix
+
+    if !flag(use-native)
+        build-depends: process >=1.0 && <1.7
+
+    if !os(windows)
+        build-depends: unix >=2.5 && <2.8
+
+test-suite Test.System.Process
+    type:             exitcode-stdio-1.0
+    main-is:          test/Streamly/System/Process.hs
+    default-language: Haskell2010
+    ghc-options:
+        -Weverything -Wno-implicit-prelude -Wno-missing-deriving-strategies
+        -Wno-missing-exported-signatures -Wno-missing-import-lists
+        -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode
+        -Wno-missed-specialisations -Wno-all-missed-specialisations
+        -Wno-monomorphism-restriction -Wno-prepositive-qualified-module
+        -Wno-unsafe -O2 -fdicts-strict -fspec-constr-recursive=16
+        -fmax-worker-args=16 -threaded -with-rtsopts=-N
+
+    build-depends:
+        streamly-process,
+        base >=4.8 && <5,
+        directory >=1.2.2 && <1.4,
+        exceptions >=0.8 && <0.11,
+        hspec >=2.0 && <3,
+        QuickCheck >=2.10 && <2.16,
+        streamly-core
+
+    if !impl(ghc <9.2)
+        ghc-options: -Wno-missing-kind-signatures
+
+    if flag(use-native)
+        cpp-options: -DUSE_NATIVE
+
+benchmark Benchmark.System.Process
+    type:             exitcode-stdio-1.0
+    main-is:          Benchmark/System/Process.hs
+    default-language: Haskell2010
+    ghc-options:
+        -Weverything -Wno-implicit-prelude -Wno-missing-deriving-strategies
+        -Wno-missing-exported-signatures -Wno-missing-import-lists
+        -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode
+        -Wno-missed-specialisations -Wno-all-missed-specialisations
+        -Wno-monomorphism-restriction -Wno-prepositive-qualified-module
+        -Wno-unsafe -O2 -fdicts-strict -fspec-constr-recursive=16
+        -fmax-worker-args=16
+
+    build-depends:
+        streamly-process,
+        base >=4.8 && <5,
+        directory >=1.2.2 && <1.4,
+        streamly-core,
+        tasty-bench >=0.2.5 && <0.5
+
+    if !impl(ghc <9.2)
+        ghc-options: -Wno-missing-kind-signatures
+
+    if flag(use-native)
+        cpp-options: -DUSE_NATIVE
+
+    if (flag(fusion-plugin) && !impl(ghc <8.6))
+        ghc-options: -fplugin Fusion.Plugin
+
+    if (flag(fusion-plugin) && !impl(ghc <8.6))
+        build-depends: fusion-plugin >=0.2 && <0.3
