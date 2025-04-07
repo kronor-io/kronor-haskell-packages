@@ -1,0 +1,4 @@
+timestamp = 2025-04-07T13:11:15Z
+github = { repo = "yesodweb/yesod", rev = "5536cabe5a5832c3a7228f7000c56833d4a7cd34" }
+subdir = 'yesod-static'
+force-version = true
