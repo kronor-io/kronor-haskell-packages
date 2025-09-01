@@ -1,0 +1,4 @@
+timestamp = 2025-09-01T05:52:43Z
+github = { repo = "iand675/hs-opentelemetry", rev = "2e577f2dbd28c67f01b80c648c8e45d972763559" }
+subdir = 'otlp'
+force-version = true
