@@ -1,0 +1,3 @@
+timestamp = 2025-09-01T08:24:09Z
+github = { repo = "kronor-io/tasty-test-reporter", rev = "509e946a09872ffe8ad8de1ffc304d0835abdbad" }
+force-version = true
