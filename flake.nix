@@ -3,6 +3,8 @@
     foliage.url = "github:andreabedini/foliage";
     nixpkgs.follows = "foliage/nixpkgs";
     flake-utils.follows = "foliage/flake-utils";
+
+
   };
 
   outputs = { self, nixpkgs, foliage, flake-utils }:
