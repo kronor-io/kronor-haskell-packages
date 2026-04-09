@@ -1,0 +1,4 @@
+timestamp = 2026-04-09T00:02:26Z
+github = { repo = "kronor-io/morpheus-graphql", rev = "dfea2dcd5403c08a7063f9c4947e1546861ad5b0" }
+subdir = 'morpheus-graphql-client'
+force-version = true
