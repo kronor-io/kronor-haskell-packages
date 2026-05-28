@@ -1,0 +1,3 @@
+timestamp = 2026-05-28T19:40:20Z
+github = { repo = "kronor-io/pg-query", rev = "493bf96e9cbbc745a4e57db266b04a31e9514e6f" }
+force-version = true
