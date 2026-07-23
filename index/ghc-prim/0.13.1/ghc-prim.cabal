@@ -1,0 +1,46 @@
+cabal-version:  2.2
+name:           ghc-prim
+version:        0.13.1
+-- NOTE: Don't forget to update ./changelog.md
+license:        BSD-3-Clause
+license-file:   LICENSE
+category:       GHC
+maintainer:     libraries@haskell.org
+bug-reports:    https://gitlab.haskell.org/ghc/ghc/issues/new
+synopsis:       GHC primitives
+build-type:     Simple
+description:
+    This package used to contain the primitive types and operations supplied by
+    GHC. They are now exported by the ghc-internal package and ghc-prim is
+    deprecated.
+
+extra-source-files: changelog.md
+
+source-repository head
+    type:     git
+    location: https://gitlab.haskell.org/ghc/ghc.git
+    subdir:   libraries/ghc-prim
+
+Library
+    default-language: Haskell2010
+
+    build-depends: ghc-internal
+
+    other-modules:
+      -- dummy module to make Hadrian/GHC build a valid library...
+      Dummy
+
+    reexported-modules:
+          GHC.Internal.CString         as GHC.CString
+        , GHC.Internal.Classes         as GHC.Classes
+        , GHC.Internal.Debug           as GHC.Debug
+        , GHC.Internal.Magic           as GHC.Magic
+        , GHC.Internal.Magic.Dict      as GHC.Magic.Dict
+        , GHC.Internal.Prim            as GHC.Prim
+        , GHC.Internal.Prim.Ext        as GHC.Prim.Ext
+        , GHC.Internal.Prim.Panic      as GHC.Prim.Panic
+        , GHC.Internal.Prim.Exception  as GHC.Prim.Exception
+        , GHC.Internal.Prim.PtrEq      as GHC.Prim.PtrEq
+        , GHC.Internal.PrimopWrappers  as GHC.PrimopWrappers
+        , GHC.Internal.Tuple           as GHC.Tuple
+        , GHC.Internal.Types           as GHC.Types
