@@ -1,0 +1,4 @@
+timestamp = 2026-07-28T13:43:02Z
+github = { repo = "juhp/hoauth2/", rev = "0a888f2a9f871b7ff1c20da819ca381bd47b9e4d" }
+subdir = 'hoauth2'
+force-version = true
