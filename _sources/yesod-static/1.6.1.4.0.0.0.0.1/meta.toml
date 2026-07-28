@@ -1,0 +1,4 @@
+timestamp = 2026-07-28T13:39:57Z
+github = { repo = "leftaroundabout/yesod/", rev = "23f8d636842023c7cde36109ea24258df0d5ecd6" }
+subdir = 'yesod-static'
+force-version = true
