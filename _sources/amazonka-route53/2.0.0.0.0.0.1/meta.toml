@@ -1,0 +1,4 @@
+timestamp = 2026-07-28T12:06:55Z
+github = { repo = "brendanhay/amazonka", rev = "b562aa3f24845e34b95748daae671860017426be" }
+subdir = 'lib/services/amazonka-route53'
+force-version = true
