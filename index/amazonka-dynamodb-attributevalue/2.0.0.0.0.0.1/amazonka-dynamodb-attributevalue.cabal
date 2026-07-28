@@ -1,0 +1,43 @@
+cabal-version: 2.2
+name:          amazonka-dynamodb-attributevalue
+version:       2.0.0.0.0.0.1
+license:       MPL-2.0
+license-file:  LICENSE
+copyright:     Copyright (c) 2013-2024 Brendan Hay
+maintainer:
+    Brendan Hay <brendan.g.hay+amazonka@gmail.com>, Jack Kelly <jack@jackkelly.name>
+
+author:        Brendan Hay
+homepage:      https://github.com/brendanhay/amazonka
+bug-reports:   https://github.com/brendanhay/amazonka/issues
+synopsis:
+    Package exposing the DynamoDB `AttributeValue` type for other packages to reuse.
+
+description:
+    Package exposing the DynamoDB `AttributeValue` type for other packages to reuse.
+
+category:      AWS
+build-type:    Simple
+
+source-repository head
+    type:     git
+    location: https://github.com/brendanhay/amazonka.git
+    subdir:   lib/amazonka-dynamodb-attributevalue
+
+library
+    exposed-modules:    Amazonka.DynamoDB.AttributeValue
+    hs-source-dirs:     src
+    default-language:   Haskell2010
+    default-extensions: NoImplicitPrelude
+    ghc-options:
+        -Wall -funbox-strict-fields -fwarn-incomplete-uni-patterns
+        -fwarn-incomplete-record-updates -fwarn-missing-deriving-strategies
+        -fwarn-unused-packages
+
+    build-depends:
+        base >=4.12 && <5,
+        aeson ^>=1.5.0.0 || ^>=2.0 || ^>=2.1 || ^>=2.2 || ^>=2.3,
+        amazonka-core ^>=2.0,
+        containers,
+        hashable >=1.3.4.0 && <1.6,
+        vector
