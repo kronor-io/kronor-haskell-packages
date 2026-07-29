@@ -1,0 +1,76 @@
+cabal-version: >=1.8
+name:          RSA
+version:       2.4.1.0.0.0.0.1
+license:       BSD3
+license-file:  LICENSE
+maintainer:    Adam Wick <awick@galois.com>
+author:        Adam Wick <awick@galois.com>
+stability:     stable
+tested-with:   ghc ==7.8.0 || ==9.14.1
+synopsis:
+    Implementation of RSA, using the padding schemes of PKCS#1 v2.1.
+
+description:
+    This library implements the RSA encryption and signature
+    algorithms for arbitrarily-sized ByteStrings. While the
+    implementations work, they are not necessarily the fastest ones
+    on the planet. Particularly key generation. The algorithms
+    included are based of RFC 3447, or the Public-Key Cryptography
+    Standard for RSA, version 2.1 (a.k.a, PKCS#1 v2.1).
+
+category:      Cryptography, Codec
+build-type:    Simple
+
+source-repository head
+    type:     git
+    location: https://github.com/GaloisInc/RSA.git
+
+flag use-crypton-pubkey-types
+    description:
+        Use the package crypton-pubkey-types the fork of crypto-pubkey-types
+
+library
+    exposed-modules:
+        Codec.Crypto.RSA
+        Codec.Crypto.RSA.Exceptions
+        Codec.Crypto.RSA.Pure
+
+    hs-source-dirs:  src
+    extensions:      DeriveDataTypeable MultiWayIf
+    ghc-options:     -Wall -fno-warn-orphans
+    build-depends:
+        base >=4.6 && <7.0,
+        binary >0.7 && <1.0,
+        bytestring >0.8 && <0.13,
+        crypto-api >=0.10 && <0.14,
+        SHA >=1.6.4.1 && <2.0
+
+    if flag(use-crypton-pubkey-types)
+        build-depends: crypton-pubkey-types >=0.5 && <0.6
+
+    else
+        build-depends: crypto-pubkey-types >=0.2 && <0.5
+
+    if impl(ghc <8.0)
+        build-depends: cipher-aes128 <0.7.0.7
+
+test-suite test-rsa
+    type:           exitcode-stdio-1.0
+    main-is:        Test.hs
+    hs-source-dirs: src .
+    other-modules:  Codec.Crypto.RSA.Pure
+    extensions:     DeriveDataTypeable MultiWayIf ScopedTypeVariables
+    ghc-options:    -Wall -fno-warn-orphans
+    build-depends:
+        base >=4.6 && <7.0,
+        binary >0.7 && <1.0,
+        bytestring >0.8 && <0.13,
+        crypto-api >=0.10 && <0.14,
+        crypto-pubkey-types >=0.4 && <0.6,
+        HUnit >=1.2 && <1.7,
+        QuickCheck >=2.5 && <3,
+        tagged >=0.2 && <0.9,
+        test-framework >=0.8.0.3 && <0.10,
+        test-framework-hunit >=0.3.0 && <0.4,
+        test-framework-quickcheck2 >=0.3.0.2 && <0.5,
+        SHA >=1.6.4.1 && <2.0

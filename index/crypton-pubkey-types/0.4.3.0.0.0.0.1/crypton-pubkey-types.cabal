@@ -1,0 +1,35 @@
+cabal-version:   2.2
+name:            crypton-pubkey-types
+version:         0.4.3.0.0.0.0.1
+license:         BSD-3-Clause
+license-file:    LICENSE
+copyright:       Vincent Hanquez <vincent@snarc.org>
+maintainer:      Pranay Sashank <pranaysashank@gmail.com>
+author:          Vincent Hanquez <vincent@snarc.org>
+tested-with:     ghc ==9.12.4 || ==9.14.1
+homepage:        http://github.com/kronor-io/crypton-pubkey-types
+synopsis:        Public keys algorithm types
+description:     Generic cryptography public keys algorithm types
+category:        Cryptography
+build-type:      Simple
+extra-doc-files:
+    CHANGELOG.md
+    README.md
+
+source-repository head
+    type:     git
+    location: https://github.com/kronor-io/crypton-pubkey-types
+
+library
+    exposed-modules:
+        Crypto.Types.PubKey.RSA
+        Crypto.Types.PubKey.DSA
+        Crypto.Types.PubKey.DH
+        Crypto.Types.PubKey.ECC
+        Crypto.Types.PubKey.ECDSA
+
+    default-language: Haskell98
+    build-depends:
+        base >=4 && <5,
+        crypton-asn1-types >=0.4 && <0.5,
+        crypton-asn1-encoding >=0.10 && <0.11
