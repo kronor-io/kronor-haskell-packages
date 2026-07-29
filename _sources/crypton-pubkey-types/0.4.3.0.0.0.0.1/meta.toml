@@ -1,0 +1,3 @@
+timestamp = 2026-07-29T14:13:22Z
+github = { repo = "kronor-io/crypton-pubkey-types", rev = "e9559fc4cbec5e42db76806b5e51d78b4417b2ba" }
+force-version = true
