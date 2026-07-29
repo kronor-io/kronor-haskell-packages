@@ -1,0 +1,4 @@
+timestamp = 2026-07-29T09:34:42Z
+github = { repo = "kronor-io/yesod", rev = "6330521b70057844f97eebd77de5bc7e7a889fb3" }
+subdir = 'yesod-static'
+force-version = true
