@@ -1,0 +1,4 @@
+timestamp = 2026-07-29T14:11:47Z
+github = { repo = "kronor-io/authenticate", rev = "9960e4a1ad14486ca8caeb0d6e6078fe2e6dcfee" }
+subdir = 'authenticate-oauth'
+force-version = true
